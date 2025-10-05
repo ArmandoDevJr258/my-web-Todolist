@@ -3,10 +3,18 @@
     padding: 0;
     background-color: aliceblue;
 }
-
-header{
-
+/* Make body take full height */
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
 }
+
+
+
+
+
 
 .action{
   width: 90%;
@@ -15,6 +23,7 @@ header{
   justify-content: center;    /* centers them horizontally */
   gap: 10px;                  /* adds space between input & button */
   margin-top: 50px;  
+  flex: 1;
 }
 .myinputbox{
     display: flex;
@@ -75,6 +84,56 @@ header{
   color: #ff0000;        /* darker red on hover */
 }
 
+.unchecked{
+  border: none;
+  background-color: beige;
+}
+.checked{
+  border: none;
+  background-color: beige;
+}
+
+/* Footer styling */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #f1f1f1;
+    font-size: 14px;
+    color: #555;
+}
+
+
 @media screen and (max-width: 768px) {
+
+
+  .action{
+    margin-left: 20px;
+  }
+  .task{
+    margin-left: -20px;
+  }
   
+}
+
+/* Tablet screens */
+@media screen and (min-width: 600px) and (max-width: 1024px) {
+  .action {
+    flex-direction: row;       /* Keep input & button in one line */
+    justify-content: center;   /* Center horizontally */
+    align-items: center;       /* Center vertically */
+    gap: 15px;                 /* More space between input & button */
+    width: 80%;                /* Slightly smaller than full width */
+    margin: 30px auto;         /* Center the container and give top spacing */
+  }
+
+  .myinputbox {
+    width: 65%;                /* Bigger input for tablet screens */
+    height: 50px;
+    margin: 0;                 /* Remove excessive top margin */
+  }
+
+  .btnadd {
+    width: 25%;                /* Adjust button size for tablet */
+    height: 50px;
+  }
 }

@@ -4,60 +4,74 @@ const btnadd = document.getElementById("btnadd");
 
 function addTask() {
   const txt = input.value.trim();
-
   if (txt === "") {
     alert("Input box can't be empty");
     return;
   }
 
-  // Create a new div for the task
   const taskDiv = document.createElement("div");
   taskDiv.classList.add("task");
 
-  // Create a span for the task text
   const taskText = document.createElement("span");
   taskText.textContent = txt;
-   taskText.classList.add("mytxt");
+  taskText.style.fontSize="20px";
+  taskText.classList.add("mytxt");
 
+  // Create mark buttons
+  const markbtn1 = document.createElement("button");
+  markbtn1.classList.add("unchecked");
+  markbtn1.innerHTML = '<ion-icon name="square-outline"></ion-icon>';
 
-  // Create delete button
+  const markbtn2 = document.createElement("button");
+  markbtn2.classList.add("checked");
+  markbtn2.innerHTML = '<ion-icon name="checkmark-done-outline"></ion-icon>';
+  
+  // Initially hide markbtn2
+  markbtn2.style.display = "none";
+
+  // Delete button
   const btndelete = document.createElement("button");
-  btndelete.textContent = "Delete";
   btndelete.innerHTML = '<ion-icon name="trash-outline"></ion-icon>';
   btndelete.classList.add("btndelete");
+  btndelete.style.background = "transparent";
+  btndelete.style.border = "none";
+  btndelete.style.cursor = "pointer";
+  btndelete.style.fontSize = "18px";
+  btndelete.addEventListener("click", () => taskDiv.remove());
 
-// Optional styling
-btndelete.style.background = "transparent";
-btndelete.style.border = "none";
-btndelete.style.cursor = "pointer";
-btndelete.style.fontSize = "18px"; // adjust size if needed
-  btndelete.addEventListener("click", () => {
-    taskDiv.remove(); // remove the task when clicked
-  });
-
-  // Optional inline styles
-  taskDiv.style.padding = "10px";
-  taskDiv.style.width = "100%";
-  taskDiv.style.marginTop = "10px";
-  taskDiv.style.borderRadius = "8px";
-  
-  taskDiv.style.fontFamily = "Arial";
-
-  // Flex for side-by-side layout
+  // Style taskDiv
   taskDiv.style.display = "flex";
   taskDiv.style.alignItems = "center";
-  taskDiv.style.justifyContent = "space-between"; // text left, button right
+  taskDiv.style.justifyContent = "space-between";
   taskDiv.style.gap = "10px";
+  taskDiv.style.padding = "10px";
+  taskDiv.style.marginTop = "10px";
+  taskDiv.style.borderRadius = "8px";
+  taskDiv.style.fontFamily = "Arial";
 
-  // Append text and button inside taskDiv
+  // Append buttons and text
+  taskDiv.appendChild(markbtn1);
+  taskDiv.appendChild(markbtn2);
   taskDiv.appendChild(taskText);
   taskDiv.appendChild(btndelete);
-
-  // Append the taskDiv to mainTasks
   mainTasks.appendChild(taskDiv);
-
-  // Clear the input field
   input.value = "";
+
+  // Click markbtn1: hide itself, show markbtn2, add strikethrough
+  markbtn1.addEventListener("click", () => {
+    markbtn1.style.display = "none";
+    markbtn2.style.display = "block"; // show second button
+    taskText.style.textDecoration = "line-through"; // add line-through
+    taskText.style.color="red";
+  });
+
+  // Optional: Click markbtn2 to undo
+  markbtn2.addEventListener("click", () => {
+    markbtn2.style.display = "none";
+    markbtn1.style.display = "block"; // show first button
+    taskText.style.textDecoration = "none"; // remove line-through
+     taskText.style.color="black"
+  });
 }
 
 // Run addTask() when the button is clicked
