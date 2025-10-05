@@ -1,0 +1,80 @@
+*{
+    margin: 0;
+    padding: 0;
+    background-color: aliceblue;
+}
+
+header{
+
+}
+
+.action{
+  width: 90%;
+  display: flex;              /* puts items in one line */
+  align-items: center;        /* vertically centers them */
+  justify-content: center;    /* centers them horizontally */
+  gap: 10px;                  /* adds space between input & button */
+  margin-top: 50px;  
+}
+.myinputbox{
+    display: flex;
+    width: 70%;
+    
+    height: 50px;
+    border-radius: 10px;
+    margin: 70px auto;
+    border-width: 3px;
+    border-color:blue;
+    padding-left: 20px;
+    
+}
+
+.btnadd{
+    width: 20%;
+    height: 50px;
+    background-color: blueviolet;
+    border-radius: 10px;
+
+}
+
+.maintasks{
+    width: 80%;
+    height:300px;
+ 
+    margin: 20px auto;
+}
+
+.task{
+   background-color: beige;
+   margin-left: -70px;
+}
+
+.mytxt{
+    background-color: beige;
+}
+
+.btndelete {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btndelete ion-icon {
+  font-size: 20px;      /* icon size */
+  color: #ff4d4f;       /* icon color */
+  transition: transform 0.2s, color 0.2s; /* smooth hover effect */
+  background-color: beige;
+}
+
+.btndelete:hover ion-icon {
+  transform: scale(1.2); /* slightly bigger on hover */
+  color: #ff0000;        /* darker red on hover */
+}
+
+@media screen and (max-width: 768px) {
+  
+}
